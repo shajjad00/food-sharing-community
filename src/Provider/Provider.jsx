@@ -3,6 +3,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import app from "../Firebase/firebasse.config";
 import { createContext, useState } from "react";
@@ -35,7 +36,22 @@ const Provider = ({ children }) => {
     return signOut(auth);
   };
 
-  const contextValue = { createUser, signIn, user, loading, userLogOut };
+  //update profile
+
+  const profileUpdate = (obj) => {
+    return updateProfile(auth.currentUser, obj);
+  };
+
+  //watch user
+
+  const contextValue = {
+    createUser,
+    signIn,
+    user,
+    loading,
+    userLogOut,
+    profileUpdate,
+  };
 
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>

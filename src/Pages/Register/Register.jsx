@@ -1,11 +1,54 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import useProvider from "../../Hooks/useProvider";
+import toast from "react-hot-toast";
 const Register = () => {
-  const { createUser } = useProvider();
-  console.log(createUser);
+  const { createUser, profileUpdate } = useProvider();
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    //auth related
+
+    if (password.length < 6) {
+      return toast.error("password Should contain at least 6 character");
+    }
+    if (!/[A-Z]/.test(password)) {
+      return toast.error(
+        "password Should contain at least 1 uppercase character"
+      );
+    }
+    if (!/[@$!%*#?&^_-]/.test(password)) {
+      return toast.error(
+        "password Should contain at least 1 Special character"
+      );
+    }
+
+    createUser(email, password)
+      .then((res) => {
+        if (res.user?.email) {
+          console.log(res.user);
+          profileUpdate({
+            displayName: name,
+            photoURL: "https://i.ibb.co/7vrJkzm/bottle-water.jpg",
+          })
+            .then(() => {})
+            .catch((error) => {
+              console.log(error);
+            });
+          navigate("/");
+          toast.success("Registration Successful");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log(name, email, password);
   };
   return (
     <>
@@ -44,8 +87,7 @@ const Register = () => {
                 </label>
                 <input
                   type="text"
-                  name="username"
-                  id="username"
+                  name="email"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Enter Your Email"
                   required=""
