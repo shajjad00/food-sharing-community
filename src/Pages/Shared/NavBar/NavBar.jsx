@@ -1,7 +1,10 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import useProvider from "../../../Hooks/useProvider";
+import toast from "react-hot-toast";
 
 const NavBar = () => {
-  const show = true;
+  const { user, logOut } = useProvider();
+  const navigate = useNavigate();
   const elements = (
     <>
       <li>
@@ -15,6 +18,17 @@ const NavBar = () => {
       </li>
     </>
   );
+
+  //sign out
+
+  const handleSignOut = () => {
+    logOut()
+      .then(() => {
+        navigate("/login");
+        toast.success("Sign Out Successful");
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <>
       {" "}
@@ -64,14 +78,14 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          {show ? (
+          {user?.email ? (
             <div className="dropdown dropdown-end">
               <label
                 tabIndex={0}
                 className="btn btn-ghost btn-circle avatar"
               >
                 <div className="w-10 rounded-full">
-                  {/* <img src={user?.photoURL} /> */}
+                  <img src={user?.photoURL} />
                 </div>
               </label>
               <ul
@@ -80,7 +94,7 @@ const NavBar = () => {
               >
                 <li>
                   <a className="justify-between">
-                    {/* {user?.displayName} */}
+                    {user?.displayName}
                     <span className="badge">New</span>
                   </a>
                 </li>
@@ -89,7 +103,7 @@ const NavBar = () => {
                 </li>
                 <li>
                   <Link
-                    // onClick={handleSignOut}
+                    onClick={handleSignOut}
                     className="hover:border-2 hover:border-green-500 bg-green-500 text-white  rounded-md pl-16 py-2 hover:bg-white hover:text-green-500 font-semibold"
                   >
                     Logout

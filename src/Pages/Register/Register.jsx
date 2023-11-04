@@ -12,6 +12,7 @@ const Register = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    const photoUrl = form.photoUrl.value;
 
     //auth related
 
@@ -35,7 +36,7 @@ const Register = () => {
           console.log(res.user);
           profileUpdate({
             displayName: name,
-            photoURL: "https://i.ibb.co/7vrJkzm/bottle-water.jpg",
+            photoURL: photoUrl,
           })
             .then(() => {})
             .catch((error) => {
@@ -105,6 +106,22 @@ const Register = () => {
                   name="password"
                   id="password"
                   placeholder="••••••••"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  required=""
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="Photo URL"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  PhotoUrl
+                </label>
+                <input
+                  type="PhotoUrl"
+                  name="photoUrl"
+                  id="PhotoUrl"
+                  placeholder="Enter Your Photo Url"
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required=""
                 />
