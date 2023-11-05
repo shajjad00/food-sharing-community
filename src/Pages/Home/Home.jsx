@@ -1,11 +1,11 @@
 import Banner from "./Banner/Banner";
-import Cards from "./Cards/Cards";
+import FeaturedFoods from "./FeaturedFoods/FeaturedFoods";
 
 const Home = () => {
   return (
     <>
       <Banner></Banner>
-      <Cards></Cards>
+      <FeaturedFoods></FeaturedFoods>
     </>
   );
 };

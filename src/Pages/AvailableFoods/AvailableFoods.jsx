@@ -1,25 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
+import useQueryData from "../../Hooks/useQueryData";
 
 const AvailableFoods = () => {
-  const {
-    data: foods,
-    isError,
-    error,
-    isLoading,
-  } = useQuery({
-    queryKey: ["foods"],
-    queryFn: async () => {
-      const res = await fetch("http://localhost:5001/foods");
-      const data = res.json();
-      return data;
-    },
-  });
+  const { data: foods } = useQueryData("foods", "http://localhost:5001/foods");
 
   return (
     <>
       <section className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {foods?.map((food) => {
-          console.log(Object.keys(food).join(","));
           const {
             _id,
             foodImageURL,
@@ -29,8 +16,6 @@ const AvailableFoods = () => {
             foodQuantity,
             pickupLocation,
             expiredDateTime,
-            additionalNotes,
-            status,
           } = food;
           return (
             <article
@@ -77,26 +62,26 @@ const AvailableFoods = () => {
                     </tbody>
                   </table>
                 </div>
-                <div className="bg-green-100 w-full py-2 px-5">
+                <div className="bg-green-400 w-full py-2 px-5">
                   <div className="flex items-center">
                     <img
                       className="w-10 h-10 rounded-full mr-4"
                       src={donatorImageURL}
                       alt=""
                     />
-                    <div className="text-sm">
-                      <p className="text-gray-900 font-semibold leading-none hover:text-gray-600">
+                    <div className="text-sm text-white">
+                      <p className=" font-semibold leading-none hover:text-gray-600">
                         {donatorName}
                       </p>
-                      <p className="text-gray-600">Donated</p>
+                      <p className="">Donated</p>
                     </div>
                   </div>
                 </div>
-                <button className=" hidden md:block w-full px-4 py-2 bg-green-100 font-semibold mt-2 rounded-md">
+                <button className=" hidden md:block w-full px-4 py-2 bg-green-500 text-white font-semibold mt-2 rounded-md">
                   View Details
                 </button>
               </div>
-              <button className="md:hidden w-full px-4 py-2 bg-green-100 font-semibold bottom-2 left-2 rounded-md">
+              <button className="md:hidden w-full px-4 py-2 bg-green-500 font-semibold bottom-2 left-2 rounded-md text-white">
                 View Details
               </button>
             </article>
