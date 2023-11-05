@@ -6,6 +6,8 @@ import AvailableFoods from "../Pages/AvailableFoods/AvailableFoods";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import FoodDetails from "../Pages/FoodDetails/FoodDetails";
+import DashBoard from "../Pages/DashBoard/DashBoard";
+import AddFood from "../Pages/AddFood/AddFood";
 
 const Route = createBrowserRouter([
   {
@@ -33,7 +35,15 @@ const Route = createBrowserRouter([
         path: "/foods/:id",
         element: <FoodDetails></FoodDetails>,
       },
+      {
+        path: "/addFood",
+        element: <AddFood></AddFood>,
+      },
     ],
+  },
+  {
+    path: "/dashBoard",
+    element: <DashBoard></DashBoard>,
   },
 ]);
 

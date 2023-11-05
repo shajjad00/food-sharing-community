@@ -80,7 +80,7 @@ const FoodDetails = () => {
                 {expiredDateTime}
               </p>
 
-              <Modal></Modal>
+              <Modal food={food}></Modal>
             </div>
           </div>
         </div>
