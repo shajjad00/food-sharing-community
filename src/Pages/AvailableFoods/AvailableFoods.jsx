@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useQueryData from "../../Hooks/useQueryData";
 
 const AvailableFoods = () => {
@@ -77,13 +78,17 @@ const AvailableFoods = () => {
                     </div>
                   </div>
                 </div>
-                <button className=" hidden md:block w-full px-4 py-2 bg-green-500 text-white font-semibold mt-2 rounded-md">
+                <Link to={`/foods/${_id}`}>
+                  <button className=" hidden md:block w-full px-4 py-2 bg-green-500 text-white font-semibold mt-2 rounded-md">
+                    View Details
+                  </button>
+                </Link>
+              </div>
+              <Link to={`/foods/${_id}`}>
+                <button className="md:hidden w-full px-4 py-2 bg-green-500 font-semibold bottom-2 left-2 rounded-md text-white">
                   View Details
                 </button>
-              </div>
-              <button className="md:hidden w-full px-4 py-2 bg-green-500 font-semibold bottom-2 left-2 rounded-md text-white">
-                View Details
-              </button>
+              </Link>
             </article>
           );
         })}
