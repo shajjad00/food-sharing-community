@@ -37,18 +37,21 @@ const Provider = ({ children }) => {
   //user logOut
 
   const userLogOut = () => {
+    setLoading(false);
     return signOut(auth);
   };
 
   //update profile
 
   const profileUpdate = (obj) => {
+    setLoading(false);
     return updateProfile(auth.currentUser, obj);
   };
 
   //google login
 
   const googleLogIn = () => {
+    setLoading(false);
     return signInWithPopup(auth, provider);
   };
 
@@ -57,6 +60,7 @@ const Provider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setLoading(false);
     });
     return () => unsubscribe;
   }, [auth]);
@@ -64,6 +68,7 @@ const Provider = ({ children }) => {
   // user sign out
 
   const logOut = () => {
+    setLoading(false);
     return signOut(auth);
   };
   const contextValue = {

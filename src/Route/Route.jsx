@@ -8,6 +8,9 @@ import Register from "../Pages/Register/Register";
 import FoodDetails from "../Pages/FoodDetails/FoodDetails";
 import DashBoard from "../Pages/DashBoard/DashBoard";
 import AddFood from "../Pages/AddFood/AddFood";
+import ManageFoods from "../Pages/ManageFoods/ManageFoods";
+import PrivateRoute from "./PrivateRoute";
+import UpdateFood from "../Pages/UpdateFood/UpdateFood";
 
 const Route = createBrowserRouter([
   {
@@ -36,8 +39,20 @@ const Route = createBrowserRouter([
         element: <FoodDetails></FoodDetails>,
       },
       {
-        path: "/addFood",
+        path: "/addFoods",
         element: <AddFood></AddFood>,
+      },
+      {
+        path: "/manageFoods",
+        element: (
+          <PrivateRoute>
+            <ManageFoods></ManageFoods>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/updateFood/:id",
+        element: <UpdateFood></UpdateFood>,
       },
     ],
   },

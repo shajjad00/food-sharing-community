@@ -20,7 +20,7 @@ const NavBar = () => {
         <Link to="/addFoods">Add a Food</Link>
       </li>
       <li>
-        <Link to="/manageFoods">Add a Food</Link>
+        <Link to="/manageFoods">Manage my Foods</Link>
       </li>
     </>
   );
