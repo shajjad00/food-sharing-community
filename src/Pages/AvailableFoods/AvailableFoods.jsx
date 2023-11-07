@@ -1,8 +1,16 @@
 import { Link } from "react-router-dom";
 import useQueryData from "../../Hooks/useQueryData";
+import LottieAnimation from "../../Component/LottieAnimation/LottieAnimation";
 
 const AvailableFoods = () => {
-  const { data: foods } = useQueryData("foods", "http://localhost:5001/foods");
+  const { data: foods, isLoading } = useQueryData(
+    "foods",
+    "http://localhost:5001/foods"
+  );
+
+  if (isLoading) {
+    return <LottieAnimation></LottieAnimation>;
+  }
 
   return (
     <>
@@ -21,7 +29,7 @@ const AvailableFoods = () => {
           return (
             <article
               key={_id}
-              className=" rounded-md shadow-xl grid grid-cols-1 gap-0 md:gap-3 lg:grid-cols-12 shadow-lg mt-5 mx-auto max-w-2xl group cursor-pointer transform duration-500 border"
+              className=" rounded-md grid grid-cols-1 gap-0 md:gap-3 lg:grid-cols-12 shadow-lg mt-5 mx-auto max-w-2xl group cursor-pointer transform duration-500 border"
             >
               <img
                 className="w-full md:ml-8 lg:ml-0 rounded-md max-h-[400px] md:h-[400px] lg:h-full object-cover md:w-72 col-span-4"

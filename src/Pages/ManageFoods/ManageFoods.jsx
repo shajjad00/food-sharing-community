@@ -4,6 +4,7 @@ import useProvider from "../../Hooks/useProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 import useQueryData from "../../Hooks/useQueryData";
+import LottieAnimation from "../../Component/LottieAnimation/LottieAnimation";
 
 const ManageFoods = () => {
   const { user } = useProvider();
@@ -63,7 +64,7 @@ const ManageFoods = () => {
   );
 
   if (isLoading) {
-    return <p>loading...</p>;
+    return <LottieAnimation></LottieAnimation>;
   }
 
   const handleDeleteFood = (id) => {
@@ -150,6 +151,11 @@ const ManageFoods = () => {
                     >
                       Delete
                     </button>
+                    <Link to={`/manage/${_id}`}>
+                      <button className="btn btn-ghost btn-xs">
+                        Manage Food
+                      </button>
+                    </Link>
                   </th>
                 </tr>
               );

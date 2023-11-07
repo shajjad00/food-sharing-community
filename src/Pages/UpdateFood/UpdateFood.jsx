@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import useQueryData from "../../Hooks/useQueryData";
 import axios from "axios";
 import toast from "react-hot-toast";
+import LottieAnimation from "../../Component/LottieAnimation/LottieAnimation";
 
 const UpdateFood = () => {
   const { id } = useParams();
@@ -12,7 +13,7 @@ const UpdateFood = () => {
   );
 
   if (isLoading) {
-    return <p>loading...</p>;
+    return <LottieAnimation></LottieAnimation>;
   }
 
   const {

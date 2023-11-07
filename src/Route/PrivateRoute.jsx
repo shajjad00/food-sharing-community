@@ -1,12 +1,13 @@
 import { Navigate } from "react-router-dom";
 import useProvider from "../Hooks/useProvider";
 import PropTypes from "prop-types";
+import LottieAnimation from "../Component/LottieAnimation/LottieAnimation";
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useProvider();
 
   if (loading) {
-    return <p>loading...</p>;
+    return <LottieAnimation></LottieAnimation>;
   }
 
   if (user) {

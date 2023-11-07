@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import useQueryData from "../../Hooks/useQueryData";
 import Modal from "../../Component/Modal/Modal";
+import LottieAnimation from "../../Component/LottieAnimation/LottieAnimation";
 
 const FoodDetails = () => {
   const { id } = useParams();
@@ -11,7 +12,7 @@ const FoodDetails = () => {
   );
 
   if (isLoading) {
-    return <p>Loading....</p>;
+    return <LottieAnimation></LottieAnimation>;
   }
   const {
     foodImageURL,
