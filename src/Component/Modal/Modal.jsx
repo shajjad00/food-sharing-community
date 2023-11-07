@@ -9,16 +9,21 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import useProvider from "../../Hooks/useProvider";
 import axios from "axios";
+import LottieAnimation from "../LottieAnimation/LottieAnimation";
+import toast from "react-hot-toast";
 
 const Modal = ({ food }) => {
-  const { user } = useProvider();
+  const [open, setOpen] = useState(false);
+  const { user, loading } = useProvider();
   const currentDate = new Date().toLocaleDateString();
-  console.log(user);
+
+  if (loading) {
+    return <LottieAnimation></LottieAnimation>;
+  }
+  const { displayName, email, photoURL } = user;
   const {
     foodImageURL,
     foodName,
-    donatorImageURL,
-    donatorName,
     foodQuantity,
     pickupLocation,
     expiredDateTime,
@@ -37,24 +42,26 @@ const Modal = ({ food }) => {
       _id,
       foodImageURL,
       foodName,
-      donatorImageURL,
-      donatorName,
+      requesterImage: photoURL,
+      requesterName: displayName,
       foodQuantity,
       pickupLocation,
       expiredDateTime,
       additionalNotes,
       donatedMoney,
       requestedDate,
+      requesterEmail: email,
     };
-    console.log(requestedFoodData);
+    console.log(requestedDate);
     axios
       .post(`http://localhost:5001/requestedFood`, requestedFoodData)
       .then((data) => {
-        console.log(data.data);
+        if (data.data?.insertedId) {
+          toast.success("Request Successful");
+        }
       });
   };
 
-  const [open, setOpen] = useState(false);
   return (
     <div>
       <button

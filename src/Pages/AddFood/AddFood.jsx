@@ -30,13 +30,13 @@ const AddFood = () => {
       status: status,
     };
 
+    console.log(expiredDate);
     axios.post("http://localhost:5001/foods", foodData).then((data) => {
       if (data.data?.insertedId) {
         toast.success("Food Added SuccessFul");
       }
       console.log(data);
     });
-    console.log(foodData);
   };
   return (
     <>

@@ -1,6 +1,7 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import useProvider from "../../../Hooks/useProvider";
 import toast from "react-hot-toast";
+import { BiMenu } from "react-icons/bi";
 
 const NavBar = () => {
   const { user, logOut } = useProvider();
@@ -21,6 +22,9 @@ const NavBar = () => {
       </li>
       <li>
         <Link to="/manageFoods">Manage my Foods</Link>
+      </li>
+      <li>
+        <Link to="/myFoodRequest">My Food Request</Link>
       </li>
     </>
   );
@@ -43,22 +47,9 @@ const NavBar = () => {
           <div className="dropdown ">
             <label
               tabIndex={0}
-              className="btn btn-ghost dark:text-white lg:hidden"
+              className="text-2xl text-white lg:hidden"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
+              <BiMenu className="mx-3 cursor-pointer"></BiMenu>
             </label>
             <ul
               tabIndex={0}
