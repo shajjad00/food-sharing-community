@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import useProvider from "../../Hooks/useProvider";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
+import useQueryData from "../../Hooks/useQueryData";
+
 const ManageFoods = () => {
   const { user } = useProvider();
-  const [foodData, setFoodData] = useState(null);
-  console.log(user);
+  // const [foodData, setFoodData] = useState(null);
 
   // const columns = [
   //   {
@@ -42,14 +45,52 @@ const ManageFoods = () => {
   //   `http://localhost:5001/manage/${user?.email}`
   // );
 
-  useEffect(() => {
-    fetch(`http://localhost:5001/manage/${user?.email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setFoodData(data);
-      });
-  }, [user?.email]);
+  // useEffect(() => {
+  //   fetch(`http://localhost:5001/manage/${user?.email}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setFoodData(data);
+  //     });
+  // }, [user?.email]);
 
+  const {
+    data: foodData,
+    isLoading,
+    refetch,
+  } = useQueryData(
+    "getFoodWithEmail",
+    `http://localhost:5001/manage/${user?.email}`
+  );
+
+  if (isLoading) {
+    return <p>loading...</p>;
+  }
+
+  const handleDeleteFood = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`http://localhost:5001/foods/${id}`).then((data) => {
+          console.log(data.data.deletedCount);
+          if (data.data?.deletedCount) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your Food has been deleted.",
+              icon: "success",
+            });
+            refetch();
+          }
+        });
+      }
+    });
+  };
   return (
     <>
       <div className="overflow-x-auto">
@@ -103,7 +144,12 @@ const ManageFoods = () => {
                     <Link to={`/updateFood/${_id}`}>
                       <button className="btn btn-ghost btn-xs">Edit</button>
                     </Link>
-                    <button className="btn btn-ghost btn-xs">Delete</button>
+                    <button
+                      onClick={() => handleDeleteFood(_id)}
+                      className="btn btn-ghost btn-xs"
+                    >
+                      Delete
+                    </button>
                   </th>
                 </tr>
               );
