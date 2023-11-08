@@ -51,6 +51,7 @@ const Modal = ({ food }) => {
       donatedMoney,
       requestedDate,
       requesterEmail: email,
+      status: "Pending",
     };
     console.log(requestedDate);
     axios

@@ -11,7 +11,7 @@ const MyFoodRequest = () => {
 
   const { data, isLoading, refetch } = useQueryData(
     "requestedFood",
-    `http://localhost:5001/requestedFood/${user?.email}`
+    `http://localhost:5001/requestedFoods/${user?.email}`
   );
   if (isLoading) {
     return <LottieAnimation></LottieAnimation>;
@@ -44,7 +44,6 @@ const MyFoodRequest = () => {
       {data.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {data?.map((food) => {
-            console.log(food);
             const {
               _id,
               foodImageURL,
@@ -53,6 +52,7 @@ const MyFoodRequest = () => {
               expiredDateTime,
               donatedMoney,
               requestedDate,
+              status,
             } = food;
             return (
               <div
@@ -96,7 +96,10 @@ const MyFoodRequest = () => {
                     <span className=" underline">Status</span>: available
                   </p>
                 </div>
-                <div className=" flex justify-end">
+                <div className=" flex gap-3 justify-end">
+                  <button className="px-10 py-2 mt-2 text-white bg-green-500 rounded-md">
+                    {status}
+                  </button>
                   <button
                     onClick={() => handleDeleteFood(_id)}
                     className="px-10 py-2 mt-2 text-white bg-green-500 rounded-md"

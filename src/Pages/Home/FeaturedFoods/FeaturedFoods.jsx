@@ -100,9 +100,11 @@ const FeaturedFoods = () => {
                         <p className="text-gray-600 text-left">Donated</p>
                       </div>
                     </div>
-                    <button className="px-5 py-2 rounded-sm bg-green-500 text-white uppercase dark:bg-[#777]">
-                      View Details
-                    </button>
+                    <Link to={`/foods/${_id}`}>
+                      <button className="w-full px-4 py-2 bg-green-500 font-semibold bottom-2 left-2 rounded-md text-white">
+                        View Details
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>

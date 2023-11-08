@@ -67,6 +67,7 @@ const ManageFoods = () => {
     return <LottieAnimation></LottieAnimation>;
   }
 
+  console.log(foodData);
   const handleDeleteFood = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -106,7 +107,6 @@ const ManageFoods = () => {
             </tr>
           </thead>
           <tbody>
-            {/* row 1 */}
             {foodData?.map((food) => {
               const {
                 _id,
@@ -160,7 +160,6 @@ const ManageFoods = () => {
                 </tr>
               );
             })}
-            {/* row 2 */}
           </tbody>
         </table>
       </div>
