@@ -12,6 +12,7 @@ import {
 import app from "../Firebase/firebasse.config";
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 const provider = new GoogleAuthProvider();
@@ -59,11 +60,28 @@ const Provider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const userEmail = currentUser?.email || user?.email;
+      const loggedUser = { email: userEmail };
       setUser(currentUser);
       setLoading(false);
+      if (currentUser) {
+        axios
+          .post("http://localhost:5001/jwt", loggedUser, {
+            withCredentials: true,
+          })
+          .then((data) => console.log("token response", data.data));
+      } else {
+        axios
+          .post("http://localhost:5001/logout", loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log(res.data);
+          });
+      }
     });
     return () => unsubscribe;
-  }, [auth]);
+  }, [auth, user]);
 
   // user sign out
 

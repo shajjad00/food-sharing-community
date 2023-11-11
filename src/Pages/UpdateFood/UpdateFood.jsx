@@ -49,11 +49,15 @@ const UpdateFood = () => {
     };
     console.log(foodData);
 
-    axios.patch(`http://localhost:5001/foods/${_id}`, foodData).then((data) => {
-      if (data.data?.modifiedCount) {
-        toast.success("Food Update Successful");
-      }
-    });
+    axios
+      .patch(`http://localhost:5001/foods/${_id}`, foodData, {
+        withCredentials: true,
+      })
+      .then((data) => {
+        if (data.data?.modifiedCount) {
+          toast.success("Food Update Successful");
+        }
+      });
   };
 
   return (

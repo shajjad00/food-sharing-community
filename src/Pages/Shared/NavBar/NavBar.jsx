@@ -15,9 +15,6 @@ const NavBar = () => {
         <Link to="/availableFoods">Available Foods</Link>
       </li>
       <li>
-        <Link to="/login">Login</Link>
-      </li>
-      <li>
         <Link to="/addFoods">Add a Food</Link>
       </li>
       <li>
@@ -25,6 +22,9 @@ const NavBar = () => {
       </li>
       <li>
         <Link to="/myFoodRequest">My Food Request</Link>
+      </li>
+      <li>
+        <Link to="/materialUi">MaterialUi</Link>
       </li>
     </>
   );
@@ -64,8 +64,8 @@ const NavBar = () => {
           >
             <img
               className="h-14 w-60"
-              src="https://i.ibb.co/4Z1SK39/Untitled-design.png"
-              alt="Fod and Beverage"
+              src="https://i.ibb.co/Ry3S090/Food-AND-Beverage.png"
+              alt="Food Community Logo"
             />
           </Link>
         </div>

@@ -31,12 +31,14 @@ const AddFood = () => {
     };
 
     console.log(expiredDate);
-    axios.post("http://localhost:5001/foods", foodData).then((data) => {
-      if (data.data?.insertedId) {
-        toast.success("Food Added SuccessFul");
-      }
-      console.log(data);
-    });
+    axios
+      .post("http://localhost:5001/foods", foodData, { withCredentials: true })
+      .then((data) => {
+        if (data.data?.insertedId) {
+          toast.success("Food Added SuccessFul");
+        }
+        console.log(data);
+      });
   };
   return (
     <>

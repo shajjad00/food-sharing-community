@@ -39,7 +39,7 @@ const Modal = ({ food }) => {
     const requestedDate = form.requestedDate.value;
 
     const requestedFoodData = {
-      _id,
+      foodId: _id,
       foodImageURL,
       foodName,
       requesterImage: photoURL,
@@ -53,12 +53,16 @@ const Modal = ({ food }) => {
       requesterEmail: email,
       status: "Pending",
     };
-    console.log(requestedDate);
     axios
-      .post(`http://localhost:5001/requestedFood`, requestedFoodData)
+      .post(`http://localhost:5001/requestedFood`, requestedFoodData, {
+        withCredentials: true,
+      })
       .then((data) => {
+        console.log(data.data);
         if (data.data?.insertedId) {
           toast.success("Request Successful");
+        } else {
+          toast.error("User has already requested this food item.");
         }
       });
   };

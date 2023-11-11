@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
 import useQueryData from "../../../Hooks/useQueryData";
+import LottieAnimation from "../../../Component/LottieAnimation/LottieAnimation";
 
 const FeaturedFoods = () => {
-  const { data } = useQueryData(
+  const { data, isLoading } = useQueryData(
     "featuredFood",
     "http://localhost:5001/featuredFood"
   );
+  if (isLoading) {
+    return <LottieAnimation></LottieAnimation>;
+  }
   console.log(data);
   return (
     <>

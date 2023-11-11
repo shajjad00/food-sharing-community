@@ -6,6 +6,7 @@ import LottieAnimation from "../../Component/LottieAnimation/LottieAnimation";
 const FoodDetails = () => {
   const { id } = useParams();
 
+  console.log(id);
   const { data: food, isLoading } = useQueryData(
     "foodDetails",
     `http://localhost:5001/foods/${id}`
@@ -14,6 +15,7 @@ const FoodDetails = () => {
   if (isLoading) {
     return <LottieAnimation></LottieAnimation>;
   }
+  console.log(food);
   const {
     foodImageURL,
     foodName,
@@ -47,16 +49,20 @@ const FoodDetails = () => {
               </div>
             </div>
             <div className="text-center pr-2">
-              <p className="text-lg italic text-gray-600 font-medium">
-                <span className="underline">Food Quantity</span>: {foodQuantity}{" "}
-                servings
-              </p>
-              <p className="text-lg italic text-gray-600 font-medium">
-                <span className="underline">Expired Date</span>:{" "}
-                {expiredDateTime}
-              </p>
+              <div>
+                <p className="text-lg italic text-gray-600 font-medium">
+                  <span className="underline">Food Quantity</span>:{" "}
+                  {foodQuantity} servings
+                </p>
+                <p className="text-lg italic text-gray-600 font-medium">
+                  <span className="underline">Expired Date</span>:{" "}
+                  {expiredDateTime}
+                </p>
+              </div>
 
-              <Modal food={food}></Modal>
+              <div>
+                <Modal food={food}></Modal>
+              </div>
             </div>
           </div>
         </div>

@@ -17,6 +17,7 @@ const MyFoodRequest = () => {
     return <LottieAnimation></LottieAnimation>;
   }
   const handleDeleteFood = (id) => {
+    console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You want to cancel this?",
@@ -44,6 +45,7 @@ const MyFoodRequest = () => {
       {data.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {data?.map((food) => {
+            console.log(food);
             const {
               _id,
               foodImageURL,
@@ -100,12 +102,16 @@ const MyFoodRequest = () => {
                   <button className="px-10 py-2 mt-2 text-white bg-green-500 rounded-md">
                     {status}
                   </button>
-                  <button
-                    onClick={() => handleDeleteFood(_id)}
-                    className="px-10 py-2 mt-2 text-white bg-green-500 rounded-md"
-                  >
-                    Cancel
-                  </button>
+                  {status.toLowerCase() == "pending" ? (
+                    <button
+                      onClick={() => handleDeleteFood(_id)}
+                      className="px-10 py-2 mt-2 text-white bg-green-500 rounded-md"
+                    >
+                      Cancel
+                    </button>
+                  ) : (
+                    ""
+                  )}
                 </div>
               </div>
             );
