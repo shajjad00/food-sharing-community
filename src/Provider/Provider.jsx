@@ -21,6 +21,8 @@ const Provider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const auth = getAuth(app);
 
+  console.log(document.cookies);
+
   //create user
 
   const createUser = (email, password) => {
@@ -89,6 +91,11 @@ const Provider = ({ children }) => {
     setLoading(false);
     return signOut(auth);
   };
+
+  // const checkTokenExpiration =()=>{
+  //   const token = cook
+  // }
+
   const contextValue = {
     createUser,
     signIn,
