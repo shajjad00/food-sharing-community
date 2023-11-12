@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import useProvider from "../../Hooks/useProvider";
 import EmptyAnimation from "../../Component/EmptyAnimation/EmptyAnimation";
+import HelmetData from "../../Component/HelmetData/HelmetData";
 
 const MyFoodRequest = () => {
   const { user } = useProvider();
@@ -44,6 +45,7 @@ const MyFoodRequest = () => {
   };
   return (
     <>
+      <HelmetData>My Food Request</HelmetData>
       {data.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {data?.map((food) => {

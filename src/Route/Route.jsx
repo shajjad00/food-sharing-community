@@ -13,7 +13,6 @@ import PrivateRoute from "./PrivateRoute";
 import UpdateFood from "../Pages/UpdateFood/UpdateFood";
 import ManageSingleFood from "../Pages/ManageSingleFood/ManageSingleFood";
 import MyFoodRequest from "../Pages/MyFoodRequest/MyFoodRequest";
-import MaterialUi from "../Pages/MaterialUi/MaterialUi";
 
 const Route = createBrowserRouter([
   {
@@ -72,10 +71,6 @@ const Route = createBrowserRouter([
             <MyFoodRequest></MyFoodRequest>
           </PrivateRoute>
         ),
-      },
-      {
-        path: "/materialUi",
-        element: <MaterialUi></MaterialUi>,
       },
     ],
   },

@@ -3,6 +3,7 @@ import useQueryData from "../../Hooks/useQueryData";
 import LottieAnimation from "../../Component/LottieAnimation/LottieAnimation";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import HelmetData from "../../Component/HelmetData/HelmetData";
 
 const AvailableFoods = () => {
   const [foods, setFoods] = useState(null);
@@ -54,6 +55,7 @@ const AvailableFoods = () => {
 
   return (
     <>
+      <HelmetData>Available Foods</HelmetData>
       <section className="flex justify-between">
         <form onSubmit={handleSearch}>
           <input

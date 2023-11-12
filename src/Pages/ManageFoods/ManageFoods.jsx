@@ -5,6 +5,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import useQueryData from "../../Hooks/useQueryData";
 import LottieAnimation from "../../Component/LottieAnimation/LottieAnimation";
+import HelmetData from "../../Component/HelmetData/HelmetData";
 
 const ManageFoods = () => {
   const { user } = useProvider();
@@ -55,6 +56,7 @@ const ManageFoods = () => {
   };
   return (
     <>
+      <HelmetData>Manage Food Page</HelmetData>
       <div className="overflow-x-auto">
         <table className="table">
           <thead>

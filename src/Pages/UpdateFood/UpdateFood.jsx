@@ -3,6 +3,7 @@ import useQueryData from "../../Hooks/useQueryData";
 import axios from "axios";
 import toast from "react-hot-toast";
 import LottieAnimation from "../../Component/LottieAnimation/LottieAnimation";
+import HelmetData from "../../Component/HelmetData/HelmetData";
 
 const UpdateFood = () => {
   const { id } = useParams();
@@ -66,6 +67,7 @@ const UpdateFood = () => {
 
   return (
     <>
+      <HelmetData>Update Food Page</HelmetData>
       <div className="bg-white border rounded-md shadow-lg relative m-10">
         <div className="flex items-start justify-between p-5 border-b rounded-t">
           <h3 className="text-xl font-semibold">Update Food</h3>
