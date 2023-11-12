@@ -11,7 +11,7 @@ const MyFoodRequest = () => {
 
   const { data, isLoading, refetch } = useQueryData(
     "requestedFood",
-    `http://localhost:5001/requestedFoods/${user?.email}`
+    `https://food-sharing-community-server-three.vercel.app/requestedFoods/${user?.email}`
   );
   if (isLoading) {
     return <LottieAnimation></LottieAnimation>;
@@ -29,7 +29,9 @@ const MyFoodRequest = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5001/requestedFood/${id}`)
+          .delete(
+            `https://food-sharing-community-server-three.vercel.app/requestedFood/${id}`
+          )
           .then((data) => {
             console.log(data.data.deletedCount);
             if (data.data?.deletedCount) {

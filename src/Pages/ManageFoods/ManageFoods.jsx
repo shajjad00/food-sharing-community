@@ -5,132 +5,25 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import useQueryData from "../../Hooks/useQueryData";
 import LottieAnimation from "../../Component/LottieAnimation/LottieAnimation";
-// import FoodTable from "./FoodTable";
-import { useMemo } from "react";
-import { useTable } from "react-table";
-import PropTypes from "prop-types";
-
-const Image = ({ value }) => {
-  return (
-    <>
-      <img
-        className="w-20 h-20 mx-auto rounded-xl"
-        src={value}
-        alt=""
-      />
-    </>
-  );
-};
-Image.propTypes = {
-  value: PropTypes.array,
-};
-
-const Manage = ({ value, refetch }) => {
-  const handleDeleteFood = (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        axios.delete(`http://localhost:5001/foods/${id}`).then((data) => {
-          console.log(data.data.deletedCount);
-          if (data.data?.deletedCount) {
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your Food has been deleted.",
-              icon: "success",
-            });
-            refetch();
-          }
-        });
-      }
-    });
-  };
-
-  return (
-    <>
-      <Link to={`/updateFood/${value}`}>
-        <button className="btn btn-ghost btn-xs">Edit</button>
-      </Link>
-      <button
-        onClick={() => handleDeleteFood(value)}
-        className="btn btn-ghost btn-xs"
-      >
-        Delete
-      </button>
-      <Link to={`/manage/${value}`}>
-        <button className="btn btn-ghost btn-xs">Manage Food</button>
-      </Link>
-    </>
-  );
-};
-
-Manage.propTypes = {
-  value: PropTypes.array,
-  refetch: PropTypes.any,
-};
 
 const ManageFoods = () => {
   const { user } = useProvider();
-  // const [data, setFoodData] = useState(null);
+  // const [foodData, setFoodData] = useState(null);
 
-  const { data, isLoading, refetch } = useQueryData(
+  const {
+    data: foodData,
+    isLoading,
+    refetch,
+  } = useQueryData(
     "getFoodWithEmail",
-    `http://localhost:5001/manage/${user?.email}`
+    `https://food-sharing-community-server-three.vercel.app/manage/${user?.email}`
   );
-
-  //table columns
-  const columns = useMemo(
-    () => [
-      {
-        Header: "Food Image",
-        accessor: "foodImageURL",
-        Cell: ({ cell: { value } }) => <Image value={value} />,
-      },
-      {
-        Header: "Name",
-        accessor: "foodName",
-      },
-      {
-        Header: "Quantity",
-        accessor: "foodQuantity",
-      },
-      {
-        Header: "Pickup Location",
-        accessor: "pickupLocation",
-      },
-      {
-        Header: "Status",
-        accessor: "status",
-      },
-      {
-        Header: "Manage",
-        accessor: "_id",
-        Cell: ({ cell: { value } }) => (
-          <Manage
-            refetch={refetch}
-            value={value}
-          />
-        ),
-      },
-    ],
-    [refetch]
-  );
-
-  const { getTableBodyProps, headerGroups, rows, prepareRow } = useTable({
-    columns,
-    data,
-  });
 
   if (isLoading) {
     return <LottieAnimation></LottieAnimation>;
   }
 
+  console.log(foodData);
   const handleDeleteFood = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -142,74 +35,94 @@ const ManageFoods = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5001/foods/${id}`).then((data) => {
-          console.log(data.data.deletedCount);
-          if (data.data?.deletedCount) {
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your Food has been deleted.",
-              icon: "success",
-            });
-            refetch();
-          }
-        });
+        axios
+          .delete(
+            `https://food-sharing-community-server-three.vercel.app/foods/${id}`
+          )
+          .then((data) => {
+            console.log(data.data.deletedCount);
+            if (data.data?.deletedCount) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your Food has been deleted.",
+                icon: "success",
+              });
+              refetch();
+            }
+          });
       }
     });
   };
-
   return (
     <>
-      {/* react table */}
-
-      <table
-        className="w-full text-center"
-        style={{ marginTop: "20px" }}
-      >
-        <thead>
-          {headerGroups.map((headerGroup, idx) => (
-            <tr
-              style={{ borderBottom: "1px solid #ddd" }}
-              key={idx}
-              {...headerGroup.getHeaderGroupProps()}
-            >
-              {headerGroup.headers.map((column, idx) => (
-                <th
-                  className=" py-2 italic text-gray-700 text-xl"
-                  key={idx}
-                  {...column.getHeaderProps()}
-                  style={{ borderBottom: "1px solid #ddd" }}
-                >
-                  {column.render("Header")}
-                </th>
-              ))}
+      <div className="overflow-x-auto">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>Name & Image</th>
+              <th>Pickup Location</th>
+              <th>foodQuantity</th>
+              <th>Expired Date</th>
+              <th></th>
             </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {rows.map((row, idx) => {
-            prepareRow(row);
-            return (
-              <>
-                <tr
-                  key={idx}
-                  {...row.getRowProps()}
-                  style={{ borderBottom: "1px solid #ddd" }}
-                >
-                  {row.cells.map((cell, idx) => (
-                    <td
-                      className="py-2 capitalize italic text-gray-500"
-                      key={idx}
-                      {...cell.getCellProps()}
+          </thead>
+          <tbody>
+            {foodData?.map((food) => {
+              const {
+                _id,
+                foodImageURL,
+                foodName,
+                foodQuantity,
+                pickupLocation,
+                expiredDateTime,
+              } = food;
+              return (
+                <tr key={_id}>
+                  <td>
+                    <div className="flex items-center space-x-3">
+                      <div className="avatar">
+                        <div className="mask mask-squircle w-20 h-20">
+                          <img
+                            src={foodImageURL}
+                            alt=""
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <div className="font-bold">{foodName}</div>
+                        <div className="text-sm opacity-50">United States</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span className="badge badge-ghost badge-lg">
+                      {pickupLocation}
+                    </span>
+                  </td>
+                  <td>{foodQuantity} Servings</td>
+                  <td>{expiredDateTime}</td>
+                  <th>
+                    <Link to={`/updateFood/${_id}`}>
+                      <button className="btn btn-ghost btn-xs">Edit</button>
+                    </Link>
+                    <button
+                      onClick={() => handleDeleteFood(_id)}
+                      className="btn btn-ghost btn-xs"
                     >
-                      {cell.render("Cell")}
-                    </td>
-                  ))}
+                      Delete
+                    </button>
+                    <Link to={`/manage/${_id}`}>
+                      <button className="btn btn-ghost btn-xs">
+                        Manage Food
+                      </button>
+                    </Link>
+                  </th>
                 </tr>
-              </>
-            );
-          })}
-        </tbody>
-      </table>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };

@@ -11,7 +11,7 @@ const ManageSingleFood = () => {
 
   const { data, isLoading } = useQueryData(
     "singleRequestedFood",
-    `http://localhost:5001/requestedFood/${id}`
+    `https://food-sharing-community-server-three.vercel.app/requestedFood/${id}`
   );
 
   if (isLoading) {
@@ -35,7 +35,7 @@ const ManageSingleFood = () => {
   const handleUpdateStatus = () => {
     axios
       .patch(
-        `http://localhost:5001/requestedFoodItem/${foodId}`,
+        `https://food-sharing-community-server-three.vercel.app/requestedFoodItem/${foodId}`,
         {
           status: "confirmed",
         },

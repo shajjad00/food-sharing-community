@@ -11,7 +11,7 @@ import LottieAnimation from "../../../Component/LottieAnimation/LottieAnimation"
 const Banner = () => {
   const { data, isLoading } = useQueryData(
     "foods",
-    "http://localhost:5001/foods"
+    "https://food-sharing-community-server-three.vercel.app/foods"
   );
   if (isLoading) {
     return <LottieAnimation></LottieAnimation>;

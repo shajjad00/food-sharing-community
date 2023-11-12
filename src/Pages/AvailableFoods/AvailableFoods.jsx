@@ -11,7 +11,7 @@ const AvailableFoods = () => {
 
   const { data, isLoading } = useQueryData(
     "foods",
-    "http://localhost:5001/foods"
+    "https://food-sharing-community-server-three.vercel.app/foods"
   );
   useEffect(() => {
     setFoods(data);
@@ -43,7 +43,9 @@ const AvailableFoods = () => {
     const value = e.target.value;
     console.log(value);
     axios
-      .get(`http://localhost:5001/foods/sort?sortBy=${value}`)
+      .get(
+        `https://food-sharing-community-server-three.vercel.app/foods/sort?sortBy=${value}`
+      )
       .then((data) => {
         console.log(data.data);
         setFoods(data.data);

@@ -54,9 +54,13 @@ const Modal = ({ food }) => {
       status: "Pending",
     };
     axios
-      .post(`http://localhost:5001/requestedFood`, requestedFoodData, {
-        withCredentials: true,
-      })
+      .post(
+        `https://food-sharing-community-server-three.vercel.app/requestedFood`,
+        requestedFoodData,
+        {
+          withCredentials: true,
+        }
+      )
       .then((data) => {
         console.log(data.data);
         if (data.data?.insertedId) {

@@ -8,23 +8,20 @@ const NavBar = () => {
   const navigate = useNavigate();
   const elements = (
     <>
-      <li>
+      <li className=" hover:bg-green-400 px-5 py-2 rounded">
         <Link to="/">Home</Link>
       </li>
-      <li>
+      <li className=" hover:bg-green-400 px-5 py-2 rounded">
         <Link to="/availableFoods">Available Foods</Link>
       </li>
-      <li>
+      <li className=" hover:bg-green-400 px-5 py-2 rounded">
         <Link to="/addFoods">Add a Food</Link>
       </li>
-      <li>
+      <li className=" hover:bg-green-400 px-5 py-2 rounded">
         <Link to="/manageFoods">Manage my Foods</Link>
       </li>
-      <li>
+      <li className=" hover:bg-green-400 px-5 py-2 rounded">
         <Link to="/myFoodRequest">My Food Request</Link>
-      </li>
-      <li>
-        <Link to="/materialUi">MaterialUi</Link>
       </li>
     </>
   );
@@ -39,6 +36,7 @@ const NavBar = () => {
       })
       .catch((err) => console.log(err));
   };
+
   return (
     <>
       {" "}
@@ -53,14 +51,14 @@ const NavBar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu dark:hover:text-white menu-sm dropdown-content mt-3 z-10 p-2 shadow rounded-box w-52 bg-white"
+              className=" dark:hover:text-white menu-sm dropdown-content mt-3 z-10 p-2 shadow rounded-box w-52 bg-green-500 text-white"
             >
               {elements}
             </ul>
           </div>
           <Link
             to="/"
-            className="normal-case hidden md:block text-xl font-semibold border border-white text-gray-300 rounded-md"
+            className="hidden md:block text-xl font-semibold border  rounded-sm"
           >
             <img
               className="h-14 w-60"
@@ -69,8 +67,8 @@ const NavBar = () => {
             />
           </Link>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 font-medium text-white dark:hover:text-white text-lg">
+        <div className="navbar-center ml-8 hidden lg:flex">
+          <ul className="px-1 flex gap-5 text-white dark:hover:text-white text-lg">
             {elements}
           </ul>
         </div>
@@ -116,19 +114,6 @@ const NavBar = () => {
               Login
             </NavLink>
           )}
-          {/* <div
-      className=" cursor-pointer ml-3"
-      onClick={handleThemeSwitch}
-    >
-      {theme == "dark" ? (
-        <BsSun
-          className="text-4xl font-bold rounded-full "
-          style={styles}
-        ></BsSun>
-      ) : (
-        <BsMoonFill className="text-4xl font-bold rounded-full"></BsMoonFill>
-      )}
-    </div> */}
         </div>
       </div>
     </>

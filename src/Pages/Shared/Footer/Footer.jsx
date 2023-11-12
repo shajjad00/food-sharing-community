@@ -66,7 +66,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:pt-6">
+            <div className="grid grid-cols-1 gap-8 md:gap-12 lg:gap-32 sm:grid-cols-2 lg:grid-cols-4 lg:pt-6">
               <div>
                 <Divider
                   light
@@ -249,7 +249,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <p className="text-xs text-center md:text-left lg:text-center text-gray-500">
+            <p className="text-xs text-center text-gray-500">
               &copy; 2022. Community Food. All rights reserved.
             </p>
           </div>

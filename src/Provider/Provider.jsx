@@ -68,15 +68,23 @@ const Provider = ({ children }) => {
       setLoading(false);
       if (currentUser) {
         axios
-          .post("http://localhost:5001/jwt", loggedUser, {
-            withCredentials: true,
-          })
+          .post(
+            "https://food-sharing-community-server-three.vercel.app/jwt",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
           .then((data) => console.log("token response", data.data));
       } else {
         axios
-          .post("http://localhost:5001/logout", loggedUser, {
-            withCredentials: true,
-          })
+          .post(
+            "https://food-sharing-community-server-three.vercel.app/logout",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {
             console.log(res.data);
           });

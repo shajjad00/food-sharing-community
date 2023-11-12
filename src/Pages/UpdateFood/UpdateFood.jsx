@@ -9,7 +9,7 @@ const UpdateFood = () => {
 
   const { data: foodData, isLoading } = useQueryData(
     "updateFood",
-    `http://localhost:5001/foods/${id}`
+    `https://food-sharing-community-server-three.vercel.app/foods/${id}`
   );
 
   if (isLoading) {
@@ -50,9 +50,13 @@ const UpdateFood = () => {
     console.log(foodData);
 
     axios
-      .patch(`http://localhost:5001/foods/${_id}`, foodData, {
-        withCredentials: true,
-      })
+      .patch(
+        `https://food-sharing-community-server-three.vercel.app/foods/${_id}`,
+        foodData,
+        {
+          withCredentials: true,
+        }
+      )
       .then((data) => {
         if (data.data?.modifiedCount) {
           toast.success("Food Update Successful");

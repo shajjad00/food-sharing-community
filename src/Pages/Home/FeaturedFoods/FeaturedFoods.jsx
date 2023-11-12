@@ -5,7 +5,7 @@ import LottieAnimation from "../../../Component/LottieAnimation/LottieAnimation"
 const FeaturedFoods = () => {
   const { data, isLoading } = useQueryData(
     "featuredFood",
-    "http://localhost:5001/featuredFood"
+    "https://food-sharing-community-server-three.vercel.app/featuredFood"
   );
   if (isLoading) {
     return <LottieAnimation></LottieAnimation>;

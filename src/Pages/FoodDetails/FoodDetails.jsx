@@ -9,7 +9,7 @@ const FoodDetails = () => {
   console.log(id);
   const { data: food, isLoading } = useQueryData(
     "foodDetails",
-    `http://localhost:5001/foods/${id}`
+    `https://food-sharing-community-server-three.vercel.app/foods/${id}`
   );
 
   if (isLoading) {
