@@ -1,8 +1,22 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Website name: Food Community
+- Live Link: https://assignment-11-tan-xi.vercel.app/
 
-Currently, two official plugins are available:
+**5 features of my projects.**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- This project has login, registration ,home page and 3 private page.
+
+- If a user does not log in with an email and password or with Google, they cannot access private routes.
+
+- After logging in, the user's name and profile photo will be displayed on the navbar
+
+- This project is mobile responsive along with Tablet and Desktop.
+
+- After login user can request for product and user also can cancel request
+
+- A logged in user can add food which can be shared with other person
+
+- In available food page user can sort food by date and by name also user can search food
+
+- user can also delete food which he added and also can update food
