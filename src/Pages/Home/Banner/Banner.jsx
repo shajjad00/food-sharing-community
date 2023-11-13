@@ -19,7 +19,6 @@ const Banner = () => {
   return (
     <Swiper
       modules={[Navigation, Pagination, EffectCreative]}
-      className=""
       effect="creative"
       spaceBetween={50}
       slidesPerView={1}
@@ -29,19 +28,26 @@ const Banner = () => {
     >
       {data?.map((item) => (
         <SwiperSlide key={item.id}>
-          <div
-            className="hero mt-4 mb-10 min-h-screen md:min-h-[500px] rounded-md"
-            style={{ backgroundImage: `url(${item?.foodImageURL})` }}
-          >
-            <div className="hero-overlay rounded-md bg-opacity-60"></div>
-            <div className="hero-content text-center text-neutral-content">
-              <div className="max-w-lg">
-                <h1 className="text-2xl text-gray-300 font-bold">
-                  {item.slogan}
-                </h1>
-                <h2 className="text-white text-xl font-bold">
+          <div className="relative w-full">
+            <img
+              src={item?.foodImageURL}
+              className="w-full object-cover h-[500px] "
+            />
+            <div className="absolute  flex items-center h-full left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 1)]">
+              <div className="text-white space-y-7 pl-14 w-1/2">
+                <h2 className="text-6xl font-bold capitalize">
                   {item.foodName}
                 </h2>
+                <p className=" max-w-4xl">
+                  What You Give Today Will Help Prevent Child Hunger In The
+                  Lives Of Many Tomorrow. Experience How Rescuing Food Is
+                  Changing Lives around the World.
+                </p>
+                <div>
+                  <button className="btn text-white border-none bg-[#EE343F] mr-5">
+                    Discover More
+                  </button>
+                </div>
               </div>
             </div>
           </div>

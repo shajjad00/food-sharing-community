@@ -56,16 +56,16 @@ const AvailableFoods = () => {
   return (
     <>
       <HelmetData>Available Foods</HelmetData>
-      <section className="flex justify-between">
+      <section className="flex flex-col md:flex-row items-center gap-6 justify-between">
         <form onSubmit={handleSearch}>
           <input
-            className="p-2 border border-gray-400"
+            className="p-2 border rounded-md border-gray-400"
             type="text"
             name="text"
             placeholder="Search Here..."
           />
           <input
-            className="px-8 py-2 ml-3 bg-green-400 text-emerald-50"
+            className="px-8 py-2 ml-3 border border-[#EE343F] italic  text-[#EE343F]"
             type="submit"
             value="Search"
           />
@@ -114,7 +114,7 @@ const AvailableFoods = () => {
 
                   <div className="col-span-8 p-1">
                     <div className=" mb-4">
-                      <h1 className="text-2xl mt-3 md:mt-0 mb-3 font-semibold text-gray-800">
+                      <h1 className="text-2xl capitalize mt-3 md:mt-0 mb-3 font-semibold text-gray-800">
                         {foodName}
                       </h1>
                       <table className="w-full">
@@ -146,7 +146,7 @@ const AvailableFoods = () => {
                         </tbody>
                       </table>
                     </div>
-                    <div className="bg-green-400 w-full py-2 px-5">
+                    <div className="bg-[#EE343F] w-full py-2 px-5">
                       <div className="flex items-center">
                         <img
                           className="w-10 h-10 rounded-full mr-4"
@@ -154,21 +154,21 @@ const AvailableFoods = () => {
                           alt=""
                         />
                         <div className="text-sm text-white">
-                          <p className=" font-semibold leading-none hover:text-gray-600">
+                          <p className=" font-semibold capitalize">
                             {donatorName}
                           </p>
-                          <p className="">Donated</p>
+                          <p className="font-semibold capitalize">Donated</p>
                         </div>
                       </div>
                     </div>
                     <Link to={`/foods/${_id}`}>
-                      <button className=" hidden md:block w-full px-4 py-2 bg-green-500 text-white font-semibold mt-2 rounded-md">
+                      <button className=" hidden md:block w-full px-4 py-2 bg-[#EE343F] text-white font-semibold mt-2 rounded-md">
                         View Details
                       </button>
                     </Link>
                   </div>
                   <Link to={`/foods/${_id}`}>
-                    <button className="md:hidden w-full px-4 py-2 bg-green-500 font-semibold bottom-2 left-2 rounded-md text-white">
+                    <button className="md:hidden w-full px-4 py-2 bg-[#EE343F] font-semibold bottom-2 left-2 rounded-md text-white">
                       View Details
                     </button>
                   </Link>
@@ -200,7 +200,7 @@ const AvailableFoods = () => {
 
                   <div className="col-span-8 p-1">
                     <div className=" mb-4">
-                      <h1 className="text-2xl mt-3 md:mt-0 mb-3 font-semibold text-gray-800">
+                      <h1 className="text-2xl capitalize mt-3 md:mt-0 mb-3 font-semibold text-gray-800">
                         {foodName}
                       </h1>
                       <table className="w-full">
@@ -232,7 +232,7 @@ const AvailableFoods = () => {
                         </tbody>
                       </table>
                     </div>
-                    <div className="bg-green-400 w-full py-2 px-5">
+                    <div className="bg-[#EE343F] w-full py-2 px-5">
                       <div className="flex items-center">
                         <img
                           className="w-10 h-10 rounded-full mr-4"
@@ -240,21 +240,21 @@ const AvailableFoods = () => {
                           alt=""
                         />
                         <div className="text-sm text-white">
-                          <p className=" font-semibold leading-none hover:text-gray-600">
+                          <p className=" font-semibold capitalize ">
                             {donatorName}
                           </p>
-                          <p className="">Donated</p>
+                          <p className="font-semibold">Donated</p>
                         </div>
                       </div>
                     </div>
                     <Link to={`/foods/${_id}`}>
-                      <button className=" hidden md:block w-full px-4 py-2 bg-green-500 text-white font-semibold mt-2 rounded-md">
+                      <button className=" hidden md:block w-full px-4 py-2 bg-[#EE343F] text-white font-semibold mt-2 rounded-md">
                         View Details
                       </button>
                     </Link>
                   </div>
                   <Link to={`/foods/${_id}`}>
-                    <button className="md:hidden w-full px-4 py-2 bg-green-500 font-semibold bottom-2 left-2 rounded-md text-white">
+                    <button className="md:hidden w-full px-4 py-2 bg-[#EE343F] font-semibold bottom-2 left-2 rounded-md text-white">
                       View Details
                     </button>
                   </Link>

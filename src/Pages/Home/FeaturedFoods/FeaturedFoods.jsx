@@ -13,7 +13,7 @@ const FeaturedFoods = () => {
   console.log(data);
   return (
     <>
-      <div className=" text-center max-w-xl mx-auto">
+      <div className=" text-center max-w-xl mx-auto mt-10">
         <h3 className=" italic text-2xl text-gray-800 dark:text-[#ddd]">
           Featured Foods
         </h3>
@@ -105,7 +105,7 @@ const FeaturedFoods = () => {
                       </div>
                     </div>
                     <Link to={`/foods/${_id}`}>
-                      <button className="w-full px-4 py-2 bg-green-500 font-semibold bottom-2 left-2 rounded-md text-white">
+                      <button className="w-full px-4 py-2 bg-[#EE343F] font-semibold bottom-2 left-2 rounded-md text-white">
                         View Details
                       </button>
                     </Link>
@@ -118,7 +118,7 @@ const FeaturedFoods = () => {
       </div>
       <div className="flex justify-center items-center my-5">
         <Link to="/availableFoods">
-          <button className=" px-10 py-2 bg-green-500 font-semibold bottom-2 left-2 rounded-md text-white">
+          <button className=" px-10 py-2 border border-[#EE343F] font-semibold bottom-2 left-2 hover:bg-gray-200 hover:font-bold rounded-md text-[#EE343F]">
             Show ALL
           </button>
         </Link>

@@ -75,7 +75,7 @@ const Modal = ({ food }) => {
     <div>
       <button
         onClick={() => setOpen(true)}
-        className=" px-10 mt-4 py-2 bg-green-500 font-semibold bottom-2 left-2 rounded-md text-white"
+        className=" px-10 mt-4 py-2 text-[#F7941D] border border-[#F7941D] font-semibold bottom-2 left-2 rounded-md "
       >
         Request
       </button>

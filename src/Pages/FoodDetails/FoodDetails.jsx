@@ -28,9 +28,9 @@ const FoodDetails = () => {
 
   return (
     <>
-      <div className="mt-20">
+      <div className="mt-5 md:mt-20">
         <div>
-          <h2 className="text-center mt-3 text-2xl italic text-gray-400">
+          <h2 className="text-center font-bold mt-3 text-2xl italic text-[#F7941D]">
             Food Information
           </h2>
           <div className="max-w-sm my-4 mx-auto">
@@ -66,7 +66,7 @@ const FoodDetails = () => {
             </div>
           </div>
         </div>
-        <h2 className="text-center mt-5 text-2xl italic text-gray-400">
+        <h2 className="text-center mt-5 text-2xl font-bold italic text-[#F7941D]">
           Donor Information
         </h2>
         <div className="max-w-sm my-4 mx-auto">

@@ -8,19 +8,19 @@ const NavBar = () => {
   const navigate = useNavigate();
   const elements = (
     <>
-      <li className=" hover:bg-green-400 px-5 py-2 rounded">
+      <li className=" border border-[#EE343F] italic text-[#EE343F] px-5 py-2 rounded">
         <Link to="/">Home</Link>
       </li>
-      <li className=" hover:bg-green-400 px-5 py-2 rounded">
+      <li className=" border border-[#EE343F] italic text-[#EE343F] px-5 py-2 rounded">
         <Link to="/availableFoods">Available Foods</Link>
       </li>
-      <li className=" hover:bg-green-400 px-5 py-2 rounded">
+      <li className=" border border-[#EE343F] italic text-[#EE343F] px-5 py-2 rounded">
         <Link to="/addFoods">Add a Food</Link>
       </li>
-      <li className=" hover:bg-green-400 px-5 py-2 rounded">
+      <li className=" border border-[#EE343F] italic text-[#EE343F] px-5 py-2 rounded">
         <Link to="/manageFoods">Manage my Foods</Link>
       </li>
-      <li className=" hover:bg-green-400 px-5 py-2 rounded">
+      <li className=" border border-[#EE343F] italic text-[#EE343F] px-5 py-2 rounded">
         <Link to="/myFoodRequest">My Food Request</Link>
       </li>
     </>
@@ -40,18 +40,18 @@ const NavBar = () => {
   return (
     <>
       {" "}
-      <div className="navbar bg-green-500 dark:bg-slate-700">
+      <div className="navbar  dark:bg-slate-700 shadow-lg mb-5">
         <div className="navbar-start">
           <div className="dropdown ">
             <label
               tabIndex={0}
-              className="text-2xl text-white lg:hidden"
+              className="text-2xl text-[#EE343F] lg:hidden"
             >
               <BiMenu className="mx-3 cursor-pointer"></BiMenu>
             </label>
             <ul
               tabIndex={0}
-              className=" dark:hover:text-white menu-sm dropdown-content mt-3 z-10 p-2 shadow rounded-box w-52 bg-green-500 text-white"
+              className=" dark:hover:text-white menu-sm dropdown-content mt-3 z-10 p-2 shadow rounded-box w-52 bg-white space-y-1 text-white"
             >
               {elements}
             </ul>
