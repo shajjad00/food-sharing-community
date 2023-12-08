@@ -72,7 +72,7 @@ const FoodDetails = () => {
         <div className="max-w-sm my-4 mx-auto">
           <hr />
         </div>
-        <div className="flex  rounded-md border border-gray-100 bg-white  shadow-lg max-w-xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-center items-center rounded-md border border-gray-100 bg-white  shadow-lg max-w-xl mx-auto gap-2">
           <img
             className="object-cover w-60"
             src={donatorImageURL}
@@ -84,7 +84,7 @@ const FoodDetails = () => {
             <p className="text-lg italic text-gray-500 font-medium">
               <span className="underline">Name</span>: {donatorName}
             </p>
-            <p className="text-lg italic text-gray-500 font-medium">
+            <p className="text-lg italic text-gray-500 font-medium mb-2">
               {" "}
               <span className="underline">Pickup Location</span>:{" "}
               {pickupLocation}

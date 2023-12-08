@@ -72,7 +72,7 @@ const Modal = ({ food }) => {
   };
 
   return (
-    <div>
+    <div className=" max-w-screen-sm mx-auto">
       <button
         onClick={() => setOpen(true)}
         className=" px-10 mt-4 py-2 text-[#F7941D] border border-[#F7941D] font-semibold bottom-2 left-2 rounded-md "

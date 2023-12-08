@@ -99,7 +99,7 @@ const NavBar = () => {
                 <li>
                   <Link
                     onClick={handleSignOut}
-                    className="hover:border-2 hover:border-green-500 bg-green-500 text-white  rounded-md pl-16 py-2 hover:bg-white hover:text-green-500 font-semibold"
+                    className="hover:border-2 hover:border-[#EE343F] bg-[#EE343F] text-white  rounded-md pl-16 py-2 hover:bg-white hover:text-[#EE343F] font-semibold"
                   >
                     Logout
                   </Link>
@@ -109,7 +109,7 @@ const NavBar = () => {
           ) : (
             <NavLink
               to="/login"
-              className="hover:border-2 mr-2 dark:bg-slate-800 hover:border-green-500 bg-green-500 text-white  rounded-md px-12  py-2 hover:bg-white hover:text-green-500 font-semibold border dark:hover:text-white dark:hover:border-white border-white"
+              className="hover:border-2 hover:border-[#EE343F] bg-[#EE343F] text-white  rounded-md py-2 px-8 hover:bg-white hover:text-[#EE343F] font-semibold"
             >
               Login
             </NavLink>

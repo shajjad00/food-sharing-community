@@ -100,19 +100,18 @@ const AvailableFoods = () => {
                 pickupLocation,
                 expiredDateTime,
               } = food;
-              console.log("render search foods");
               return (
                 <article
                   key={_id}
                   className=" rounded-md grid grid-cols-1 gap-0 md:gap-3 lg:grid-cols-12 shadow-lg mt-5 mx-auto max-w-2xl group cursor-pointer transform duration-500 border"
                 >
                   <img
-                    className="w-full md:ml-8 lg:ml-0 rounded-md max-h-[400px] md:h-[400px] lg:h-full object-cover md:w-72 col-span-4"
+                    className="h-[400px]  lg:h-full w-[450px] md:w-full object-cover md:col-span-4 md:ml-8 lg:ml-0 rounded-md"
                     src={foodImageURL}
                     alt=""
                   />
 
-                  <div className="col-span-8 p-1">
+                  <div className="md:col-span-8 p-1">
                     <div className=" mb-4">
                       <h1 className="text-2xl capitalize mt-3 md:mt-0 mb-3 font-semibold text-gray-800">
                         {foodName}
@@ -193,12 +192,12 @@ const AvailableFoods = () => {
                   className=" rounded-md grid grid-cols-1 gap-0 md:gap-3 lg:grid-cols-12 shadow-lg mt-5 mx-auto max-w-2xl group cursor-pointer transform duration-500 border"
                 >
                   <img
-                    className="w-full md:ml-8 lg:ml-0 rounded-md max-h-[400px] md:h-[400px] lg:h-full object-cover md:w-72 col-span-4"
+                    className="h-[400px]  lg:h-full w-[450px] md:w-full object-cover md:col-span-4 md:ml-8 lg:ml-0 rounded-md"
                     src={foodImageURL}
                     alt=""
                   />
 
-                  <div className="col-span-8 p-1">
+                  <div className="md:col-span-8 p-1">
                     <div className=" mb-4">
                       <h1 className="text-2xl capitalize mt-3 md:mt-0 mb-3 font-semibold text-gray-800">
                         {foodName}
